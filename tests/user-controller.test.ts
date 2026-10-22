@@ -1,11 +1,12 @@
 // tests/api.spec.ts
 import {test, expect} from '@playwright/test';
+import type {APIRequestContext} from '@playwright/test';
 
 let baseURL: string = 'http://localhost:3000/users';
 
 test.describe('User management API', () => {
 
-    const cleanupUsers = async (request: any): Promise<void> => {
+    const cleanupUsers = async (request: APIRequestContext): Promise<void> => {
         const response = await request.get(`${baseURL}`);
         const users: Array<any> = await response.json();
 
